@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        #sub {
+            margin-top: 10px;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        h1 {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            text-shadow: black;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: black;
+            display: flex;
+            justify-content: center;
+        }
+        
+        #inputt {
+            margin-left: 38em;
+            height: 20px;
+            width: 200px;
+            border: solid 1px red;
+            text-align: center;
+        }
+        
+        h2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: black;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        
+        body {
+            background-color: lightslategray;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        #result {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 20px;
+            color: red;
+            margin-left: 27em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To Do List!</h1>
+    <form method="POST" action="#">
+        <input type="text" name="info" id="inputt" value="info" placeholder="say me" />
+        <input type="submit" id="sub" value="SEND">
+    </form>
+
+    <h2>Resultat</h2>
+    <ul id="result"></ul>
+    <!--/*<div id="butt"></div>-->
+    <script>
+        "use strict";
+        let form = document.querySelector("form");
+        form.addEventListener("submit", function(e) {
+            e.preventDefault();
+
+            let a = document.querySelector("#inputt").value;
+            console.log(a);
+            let li = document.createElement("li");
+            let content = document.createTextNode(a);
+            let span = document.createElement("span");
+
+            span.appendChild(content);
+            document.querySelector("#result").appendChild(li);
+
+            let button = document.createElement("button");
+            button.textContent = "X";
+            button.addEventListener("click", function() {
+                let ul = document.querySelector("#result");
+                ul.removeChild(li);
+            });
+
+            li.appendChild(span);
+            li.appendChild(button);
+            li.addEventListener("dblclick", function(a) {
+                span.contentEditable = "true";
+
+            });
+
+            document.querySelector("#result").appendChild(li);
+
+
+
+
+
+
+
+
+
+
+
+        })
+    </script>
+</body>
+
+</html>
